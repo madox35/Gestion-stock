@@ -1,5 +1,21 @@
 <li>
     <%= product.nom %>
     <%= product.emprunte_par %>
-    <a href="../products/<%= product.id %>" data-method="delete" data-confirm="Are you sure?">Delete</a>
+    <a href="../products/<%= product.id %>">Détails</a>
+    <button onclick="deleteRequest()" >
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
 </li>
+
+<script>
+    function deleteRequest(){
+        var xhr1 = new XMLHttpRequest();
+        xhr1.open('DELETE', "../products/<%= product.id %>", true);
+        xhr1.onreadystatechange = function(){
+            if (this.status == 200 && this.readyState == 4) {
+                console.log("request delete sent");
+            }
+        };
+        xhr1.send();
+    }
+</script>

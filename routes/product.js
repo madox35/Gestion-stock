@@ -20,57 +20,55 @@ router.post('/',function(req, res) {
     product.nom             = req.body.nom;
     product.date            = req.body.date;
     product.emprunte_par    = req.body.emprunte_par;
-    product.disponibilite   = req.body.disponibilite;
     product.comments        = req.body.comments;
 
     product.save(function(err) {
         if (err)
             res.send(err);
 
-        //   res.json({ message: 'product created!' });
-            res.render('products/index',{
-                product : product
-            });
+        res.render('products/index',{
+            product : product
+        });
     });
 });
 
 router.get('/:product_id',function(req, res){
 
-  Product.findById(req.params.product_id, function(err, product) {
-      if (err)
-          res.send(err);
-      res.json(product);
-  });
+    Product.findById(req.params.product_id, function(err, product) {
+        if (err)
+            res.send(err);
+        res.render("../products/show_one", {product: product});
+    });
 });
 
 router.put('/:product_id',function(req, res) {
 
-  Product.findById(req.params.product_id, function(err, product) {
+    Product.findById(req.params.product_id, function(err, product) {
 
-      if (err)
-          res.send(err);
+        if (err)
+            res.send(err);
 
-      product.nom = req.body.nom;
+        product.nom = req.body.nom;
 
-      product.save(function(err) {
-          if (err)
-              res.send(err);
+        product.save(function(err) {
+            if (err)
+                res.send(err);
 
-          res.json({ message: 'product updated!' });
-      });
-  });
+            res.render('../products/index');
+        });
+    });
 });
 
 
 router.delete('/:product_id',function(req, res) {
-  Product.remove({
-      _id: req.params.product_id
-  }, function(err, bear) {
-      if (err)
-          res.send(err);
+    Product.remove({
+        _id: req.params.product_id
+    }, function(err, bear) {
+        if (err)
+            res.send(err);
 
-      res.json({ message: 'Successfully deleted' });
-  });
+        res.render('../products/index');
+    });
 });
 
 module.exports = router;

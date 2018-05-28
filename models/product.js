@@ -5,8 +5,7 @@ var ProductSchema   = new Schema({
     nom:  String,
     date: { type: Date, default: Date.now },
     emprunte_par: String,
-    disponibilite: Boolean,
-    comments: [{ body: String, date: Date }]
+    comments: String
 });
 
 module.exports = mongoose.model('Product', ProductSchema);
