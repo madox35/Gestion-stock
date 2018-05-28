@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <h1>Produits enregistrés</h1>
+    <ul>
+        <%if (products) { %>
+            <% products.forEach(function(product) { %>
+                <%- include('../products/show_one',{product:product}); %>
+            <% }); %>
+        <% } %>
+    </ul>
+
+    <% include ../products/create %>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+</html>

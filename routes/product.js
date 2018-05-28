@@ -7,21 +7,31 @@ router.get('/', function(req, res, next) {
         if (err)
             res.send(err);
 
-        res.json(products);
-    });
+        // res.json(products);
+        res.render('products/index',{
+          products : products
+        });
+    });    
 });
 
 router.post('/',function(req, res) {
 
-  var product = new Product();
-  product.name = req.body.name;
-  
-  product.save(function(err) {
-      if (err)
-          res.send(err);
+    var product = new Product();
+    product.nom             = req.body.nom;
+    product.date            = req.body.date;
+    product.emprunte_par    = req.body.emprunte_par;
+    product.disponibilite   = req.body.disponibilite;
+    product.comments        = req.body.comments;
 
-      res.json({ message: 'product created!' });
-  });
+    product.save(function(err) {
+        if (err)
+            res.send(err);
+
+        //   res.json({ message: 'product created!' });
+            res.render('products/index',{
+                product : product
+            });
+    });
 });
 
 router.get('/:product_id',function(req, res){
@@ -40,7 +50,7 @@ router.put('/:product_id',function(req, res) {
       if (err)
           res.send(err);
 
-      product.name = req.body.name;
+      product.nom = req.body.nom;
 
       product.save(function(err) {
           if (err)
