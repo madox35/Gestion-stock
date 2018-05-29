@@ -3,9 +3,15 @@ var Schema       = mongoose.Schema;
 
 var ProductSchema   = new Schema({
     nom:  String,
-    date: { type: Date, default: Date.now },
+    reference: String,
+    photo: String,
+    date: {type:Date, default: Date.now},
     emprunte_par: String,
-    comments: String
+    localisation: String,
+    estDispo: Boolean,
+    caution: Number,
+    debut_emprunt: Date,
+    fin_emprunt: Date
 });
 
 module.exports = mongoose.model('Product', ProductSchema);
