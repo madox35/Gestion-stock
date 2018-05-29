@@ -1,16 +1,35 @@
 <h1>Nouvel enregistrement</h1>
-<form action="" method="post">
+<form action="../products/" method="post">
     <label for="unname">Nom</label>
-    <input type="text" id="unname" name="nom">
+    <input type="text" id="unname" name="nom"><br>
+
+    <label for="reference">Reference</label>
+    <input type="text" id="reference" name="reference"><br>
+
+    <label for="photo">Photo</label>
+    <input type="text" id="photo" name="photo"><br>
 
     <label for="date">Date</label>
-    <input type="text" id="date" name="date">
+    <input type="text" id="date" name="date"><br>
 
-    <label for="emprunt">Emprunté par</label>
-    <input type="text" id="emprunt" name="emprunte_par">
+    <label for="emprunt_par">Emprunté par</label>
+    <input type="text" id="emprunt_par" name="emprunte_par"><br>
     
-    <label for="comment">Comments</label>
-    <input type="text" id="comment" name="comments">
+    <label for="localisation">Localisation</label>
+    <input type="text" id="localisation" name="localisation"><br>
 
+    <label for="disponibilite">Disponibilite</label>
+    <input type="checkbox" name="disponibilite"/>
+    <input type="hidden" name="disponibilite" value="false"/><br>
+
+    <label for="caution">Caution</label>
+    <input type="number" id="caution" name="caution"><br>
+    
+    <label for="debut_emprunt">Debut emprunt</label>
+    <input type="date" id="debut_emprunt" name="debut_emprunt"><br>
+    
+    <label for="fin_emprunt">Fin emprunt</label>
+    <input type="date" id="fin_emprunt" name="fin_emprunt"><br>
+    
     <input type="submit" value="Enregistrer">
 </form>

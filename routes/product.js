@@ -57,7 +57,7 @@ router.put('/:product_id',function(req, res) {
             if (err)
                 res.send(err);
 
-            res.json({message: "Produit modifié avec succès!"});
+            res.json({message: "Sauvegardé!"});
         });
     });
 });
@@ -70,7 +70,7 @@ router.delete('/:product_id',function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({message: "Produit supprimé avec succès!"});
+        res.json({message:"Supprimé!"});
     });
 });
 

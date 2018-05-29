@@ -1,21 +1,35 @@
-<li>
-    <%= product.nom %>
-    <%= product.emprunte_par %>
-    <a href="../products/<%= product.id %>">Détails</a>
+<form action="../products/">
+    <label for="nom">Nom enregistré (id: <%= product.id %>) : </label>
+    <input type="text" value="<%= product.nom %>" name="nom">
+
+    <button onclick="updateRequest()">
+        Sauvegarder
+    </button>
     <button onclick="deleteRequest()" >
         <span class="glyphicon glyphicon-remove"></span>
     </button>
-</li>
+</form>
+
 
 <script>
     function deleteRequest(){
-        var xhr1 = new XMLHttpRequest();
-        xhr1.open('DELETE', "../products/<%= product.id %>", true);
-        xhr1.onreadystatechange = function(){
-            if (this.status == 200 && this.readyState == 4) {
-                console.log("request delete sent");
+        $.ajax({
+            url: '../products/<%= product.id %>',
+            type: 'DELETE',
+            success: function(result) {
+                console.log("Element supprimé!")
             }
-        };
-        xhr1.send();
+        });
+    }
+
+    function updateRequest(){
+        $.ajax({
+            url: '../products/<%= product.id %>',
+            type: 'PUT',
+            data: {nom:"Voiture"},
+            success: function() {
+                console.log("Element modifié!");
+            }
+        });
     }
 </script>
