@@ -7,7 +7,8 @@ router.get('/', function(req, res, next) {
         if (err)
             res.send(err);
 
-        res.render('products/index', {products: products});
+        // res.render('products/index', {products: products});
+        res.json(products);
     });    
 });
 
@@ -38,7 +39,7 @@ router.get('/:product_id',function(req, res){
     Product.findById(req.params.product_id, function(err, product) {
         if (err)
             res.send(err);
-        res.render('products/show_one', {product: product});
+        res.json(product);
     });
 });
 
