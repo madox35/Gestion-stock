@@ -76,7 +76,7 @@ Nous utilisons git pour gérer les versions de notre projet.
 
 ## Authors
 
-* **Hugo Jové** - *Gestion-stock* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Hugo Jové** - *Gestion-stock* - [xMADOXX](https://github.com/xMADOXX)
 
 Voir aussi les autres contributeurs [contributors](https://github.com/xMADOXX/Gestion-stock/contributors) qui ont participé à la réalisation de ce projet.
 
