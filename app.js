@@ -3,8 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var jwt = require('jsonwebtoken');
+
+var passport = require("passport");
+var passportJWT = require("passport-jwt");
 
 var indexRouter = require('./routes/index');
+var signupRouter = require('./routes/signup');
+var loginRouter = require('./routes/login');
 var productRouter = require('./routes/product');
 
 var mongoose   = require('mongoose');
@@ -12,6 +18,7 @@ var app = express();
 
 //connect to our database
 mongoose.connect('mongodb://127.0.0.1:27017/');
+require('./auth/auth');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +31,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/products', productRouter);
+app.use('/signup',signupRouter);
+app.use('/login',loginRouter);
+app.use('/products', passport.authenticate('jwt', { session : false }), productRouter );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

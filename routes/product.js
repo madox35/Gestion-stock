@@ -7,8 +7,11 @@ router.get('/', function(req, res, next) {
         if (err)
             res.send(err);
 
-        // res.render('products/index', {products: products});
-        res.json(products);
+        res.json({
+            products : products,
+            user : req.user,
+            token : req.query.secret_token
+        });
     });    
 });
 
@@ -30,7 +33,11 @@ router.post('/',function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({message: "Produit créé avec succès!"});
+        res.json({
+            message: "Produit créé avec succès!",
+            user : req.user,
+            token : req.query.secret_token
+        });
     });
 });
 
@@ -39,7 +46,11 @@ router.get('/:product_id',function(req, res){
     Product.findById(req.params.product_id, function(err, product) {
         if (err)
             res.send(err);
-        res.json(product);
+        res.json({
+            product: product,
+            user : req.user,
+            token : req.query.secret_token
+        });
     });
 });
 
@@ -58,7 +69,11 @@ router.put('/:product_id',function(req, res) {
             if (err)
                 res.send(err);
 
-            res.json({message: "Sauvegardé!"});
+            res.json({
+                message: "Sauvegardé!",
+                user : req.user,
+                token : req.query.secret_token
+            });
         });
     });
 });
@@ -71,7 +86,11 @@ router.delete('/:product_id',function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({message:"Supprimé!"});
+        res.json({
+            message:"Supprimé!",
+            user : req.user,
+            token : req.query.secret_token
+        });
     });
 });
 
